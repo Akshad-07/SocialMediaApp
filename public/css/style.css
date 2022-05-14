@@ -37,3 +37,16 @@
     background-color: #833AB4;
     color: #fff;
 }
+
+#welcome{
+    color:darkcyan;
+}
+
+h1{
+    text-align: center;
+}
+
+#main {
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
