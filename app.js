@@ -12,7 +12,9 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 const keys = require("./config/keys");
 // User collection
 const User = require("./models/user");
+//link passports to the server
 require("./passport/google-passport");
+require("./passport/facebook-passport");
 // initialize application
 const app = express();
 // Express config
@@ -79,6 +81,18 @@ app.get('/auth/google',
         res.redirect("/profile");
     });
 
+// Facebook Auth Routes
+app.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/' }),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/profile');
+  });
+
+//Handle profile routes
 app.get("/profile", (req, res) => {
     User.findById({_id:req.user._id})
     .then((user) => {

@@ -18,6 +18,7 @@
     "handlebars": "^4.7.7",
     "mongoose": "^6.3.3",
     "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "save": "^2.5.0",
     "session": "^0.1.0"
