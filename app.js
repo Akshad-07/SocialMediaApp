@@ -134,6 +134,32 @@ app.post("/addEmail", (req,res) => {
     });
 });
 
+//HANDLE PHONE POST ROUTE
+app.post("/addphone", (req, res) => {
+    const phone = req.body.phone;
+    User.findById({_id: req.user._id})
+    .then((user) => {
+        user.phone = phone;
+        user.save()
+        .then(() => {
+            res.redirect("/profile");
+        });
+    });
+});
+
+// HANDLE LOCATION ROUTE
+app.post("/addLocation", (req, res) => {
+    const location = req.body.location;
+    User.findById({_id: req.user._id})
+    .then((user) => {
+        user.location = location;
+        user.save()
+        .then(() => {
+            res.redirect("/profile");
+        });
+    });
+});
+
 //Handle user logout route
 app.get("/logout", (req, res) =>{
     req.logout();
