@@ -187,7 +187,7 @@ app.post("/addLocation", (req, res) => {
 
 //HANDLE POST ROUTES FOR POSTS
 
-app.get("/addpost", (req, res) => {
+app.get("/addPost", (req, res) => {
     res.render("addpost");
 });
 //HANDLE POST ROUTE
