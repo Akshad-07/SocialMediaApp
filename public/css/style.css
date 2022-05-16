@@ -1,36 +1,42 @@
 #homepage {
     text-align: center;
 }
+
 .btn-facebook {
     background-color: #4aa1f3;
     border: 0%;
     color: #fff;
     width: auto
 }
+
 .btn-facebook:link,
 .btn-facebook:visited {
     text-decoration: none;
     background-color: #4aa1f3;
     color: #fff;
 }
+
 .btn-gplus {
     background-color: #DB4437;
     color: #fff;
     border: 0%;
     width: auto;
 }
+
 .btn-gplus:link,
 .btn-gplus:visited {
     text-decoration: none;
     background-color: #DB4437;
     color: #fff;
 }
+
 .btn-instagram {
-    background-color:#833AB4;
+    background-color: #833AB4;
     color: #fff;
     border: 0%;
     width: auto;
 }
+
 .btn-instagram:link,
 .btn-instagram:visited {
     text-decoration: none;
@@ -38,11 +44,11 @@
     color: #fff;
 }
 
-#welcome{
-    color:darkcyan;
+#welcome {
+    color: darkcyan;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
@@ -56,16 +62,16 @@ h1{
 }
 
 #address {
-    color:darkcyan;
+    color: darkcyan;
 }
 
 .post-user-pic {
     width: 100px;
     height: auto;
-} 
+}
 
 .red {
-    color:green;
+    color: green;
 }
 
 #comment-user-picture {
@@ -73,3 +79,15 @@ h1{
     height: auto;
 }
 
+#users-image {
+    width: 100px;
+    height: auto;
+}
+
+#users-box {
+    margin: 5px 5px 5px 5px;
+}
+
+.row {
+    width: 100%;
+}

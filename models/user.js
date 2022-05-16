@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     fullname: {
-        type: String, 
+        type: String,
         defaut: ""
     },
     firstname: {
@@ -28,7 +28,7 @@ const userSchema = new Schema({
     location: {
         type: String
     },
-    fbTokens: Array, 
+    fbTokens: Array,
     facebook: {
         type: String
     },

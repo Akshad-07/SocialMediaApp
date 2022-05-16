@@ -36,10 +36,10 @@ passport.use(new InstagramStrategy({
           new User(newUser).save()
             .then((user) => {
               done(null, user);
-          })
-      }
-  }).catch((err) => {
-    if(err) throw err;
-  })
+            })
+        }
+      }).catch((err) => {
+        if (err) throw err;
+      })
   }
 ));

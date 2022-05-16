@@ -1,15 +1,20 @@
-<div class="container-fluid">    
+<div class="container-fluid">
     <div class="row">
         {{#each users}}
-        <div class="col-sm-4">
-            <div class="card" style="width: 18rem;">
+        <div class="col" id="users-box">
+            <a href="/user/{{_id}}">
+                <img class="rounded" src="{{image}}" id="users-image">
+            </a>
+            {{!-- <div class="card" style="width: 18rem;">
                 <img src="{{image}}" class="card-img-top">
                 <div class="card-body">
-                    <a href="/user/{{id}}"><h5 class="card-title">{{fullname}}</h5></a>
+                    <a href="/user/{{id}}">
+                        <h5 class="card-title">{{fullname}}</h5>
+                    </a>
                     <p id="address" class="card-title">{{location}}</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
         {{/each}}
-    </div>    
+    </div>
 </div>

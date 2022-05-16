@@ -9,43 +9,43 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    User.findById(id, function(err, user) {
+    User.findById(id, function (err, user) {
         done(err, user);
     });
 });
 
 passport.use(new GoogleStrategy({
-    clientID:     keys.GoogleClientID,
+    clientID: keys.GoogleClientID,
     clientSecret: keys.GoogleClientSecret,
     callbackURL: "/auth/google/callback",
     proxy: true
-    
-  },
-  (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-      User.findOne({
-          google: profile.id
-      }).then((user) => {
-          if(user){
-              done(null, user);
-          }
-          else{
-              const newUser = {
-                  google: profile.id,
-                  fullname: profile.displayName,
-                  lastname: profile.name.familyName,
-                  firstname: profile.name.givenName,
-                  email: profile.emails[0].value,
-                  image: profile.photos[0].value
-              }
-              //save user into database
-              new User(newUser).save()
-              .then((user) => {
-                  done(null, user);
-              })
-          }
-      })
-  }
+
+},
+    (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
+        User.findOne({
+            google: profile.id
+        }).then((user) => {
+            if (user) {
+                done(null, user);
+            }
+            else {
+                const newUser = {
+                    google: profile.id,
+                    fullname: profile.displayName,
+                    lastname: profile.name.familyName,
+                    firstname: profile.name.givenName,
+                    email: profile.emails[0].value,
+                    image: profile.photos[0].value
+                }
+                //save user into database
+                new User(newUser).save()
+                    .then((user) => {
+                        done(null, user);
+                    })
+            }
+        })
+    }
 ));
 
 
