@@ -188,8 +188,9 @@ app.post("/addLocation", (req, res) => {
 //HANDLE POST ROUTES FOR POSTS
 
 app.get("/addPost", (req, res) => {
-    res.render("addpost");
+    res.render("addPost");
 });
+
 //HANDLE POST ROUTE
 app.post("/savePost", (req, res) => {
     var allowComments;
@@ -241,10 +242,19 @@ app.put("/editingPost/:id", (req, res) => {
         });
     });
 });
+
+//HANDLE DELETE ROUTE
+app.delete("/:id", (req, res) => {
+    Post.remove({_id: req.params.id})
+    .then(() => {
+        res.redirect("profile");
+    });
+});
 //HANDLE POSTS ROUTE
 app.get("/posts", ensureAuthentication, (req, res) => {
     Post.find({status: "public"})
     .populate("user")
+    .populate("comments.commentUser")
     .sort({date: "desc"})
     .then((posts) => {
         res.render("publicPosts", {
@@ -252,6 +262,33 @@ app.get("/posts", ensureAuthentication, (req, res) => {
         });
     });
 });
+//display single users all public posts
+app.get("/showposts/:id", (req, res) => {
+    Post.find({user: req.params.id, status: "public"})
+    .populate("user")
+    .sort({date: "desc"})
+    .then((posts) => {
+        res.render("showUserPosts", {
+            posts: posts
+        });
+    });
+});
+//Save comments into database
+app.post("/addComment/:id", (req, res) => {
+    Post.findOne({_id: req.params.id})
+    .then((post) => {
+        const newComment = {
+            commentBody: req.body.commentBody,
+            commentUser: req.user._id
+        }
+        post.comments.push(newComment)
+        post.save()
+        .then(() => {
+            res.redirect("/posts");
+        });
+    });
+});
+
 //Handle user logout route
 app.get("/logout", (req, res) =>{
     req.logout();
